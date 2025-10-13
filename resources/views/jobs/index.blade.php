@@ -7,19 +7,25 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="min-h-screen">
-    <header class="w-full bg-slate-600 shadow p-4">
-        <div class="mx-auto px-4 flex items-center justify-center">
-            <h1 class="text-lg text-white font-bold">Feira vagas</h1>
-        </div>
-    </header>
+<body class="min-h-screen bg-slate-50">
+    <x-jobs.header>
+        <x-jobs.link target="sobre" />
+        <x-jobs.dialog target="sobre">
+            <x-jobs.contents.sobre />
+        </x-jobs.dialog>
 
+        <x-jobs.link target="contato" />
+        <x-jobs.dialog target="contato">
+            <x-jobs.contents.contato />
+        </x-jobs.dialog>
+    </x-jobs.header>
 
-    <main class="grid grid-cols-1 w-full md:w-3/4 mx-auto mt-12 md:grid-cols-2 lg:grid-cols-3 gap-4 p-2">
+    <main class="main">
         @foreach ($jobs as $job)
-            <div class="rounded shadow p-4 ">
-                {{ $job->title }}
-            </div>
+            <x-jobs.card :$job />
+            <x-jobs.dialog target="job-{{ $job->id }}">
+                <x-jobs.contents.job :$job />
+            </x-jobs.dialog>
         @endforeach
     </main>
 </body>
