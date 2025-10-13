@@ -12,7 +12,8 @@
     <h1 class="text-2xl sm:text-3xl font-bold text-center text-slate-700">Feira Vagas</h1>
     <p class="text-center text-slate-500 text-sm sm:text-base">Faça o login para cadastrar uma nova vaga</p>
 
-    <form action="/create" method="POST" class="space-y-5">
+    <form action="{{ route('newlogin') }}" method="POST" class="space-y-5">
+      @csrf
       <div>
         <label for="email" class="block text-sm font-medium text-slate-600">E-mail</label>
         <input type="email" id="email" name="email" required
