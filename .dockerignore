@@ -1,0 +1,23 @@
+# .dockerignore
+
+# Arquivos de segredos e configurações locais
+.env
+.env.*.local
+
+# Dependências do Composer
+/vendor
+
+# Dependências do Node.js
+/node_modules
+
+# Arquivos do Git
+.git
+.gitignore
+
+# Logs
+/storage/logs
+
+# Arquivos do Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
