@@ -3,6 +3,8 @@
 <p class="text-center text-slate-500">Preencha as informações da vaga abaixo</p>
 
 <form action="/jobs" method="POST" class="space-y-5 w-full">
+    @csrf
+
     <div>
         <label for="title" class="block text-sm font-medium text-slate-600">Título da vaga</label>
         <input type="text" id="title" name="title" required

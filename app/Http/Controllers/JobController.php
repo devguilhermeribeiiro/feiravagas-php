@@ -13,7 +13,7 @@ class JobController extends Controller
     public function index(): View
     {
         return view("jobs/index", [
-            "jobs" => Job::all()
+            "jobs" => Job::all()->reverse()
         ]);
     }
 
@@ -32,5 +32,15 @@ class JobController extends Controller
         return back()->withErrors([
             'email' => 'Credenciais inválidas'
         ])->onlyInput("email");
+    }
+
+    public function newJob(Request $request): RedirectResponse
+    {
+        $data = $request->all();
+        $job = new Job($data);
+
+        if ($job->save()) {
+            return redirect()->route("jobs");
+        }
     }
 }
