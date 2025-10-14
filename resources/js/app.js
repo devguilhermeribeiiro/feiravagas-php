@@ -1,48 +1,58 @@
 import './bootstrap';
 
-const contatoLink = document.getElementById("contato-link");
-const sobreLink = document.getElementById("sobre-link");
-const contatoModal = document.getElementById("contato-modal");
-const sobreModal = document.getElementById("sobre-modal");
-const btnSobreModal = document.getElementById("btn-sobre-modal");
-const btnContatoModal = document.getElementById("btn-contato-modal");
+// Variables
+
+const contatoLink = getById("contato-link");
+const sobreLink = getById("sobre-link");
+const publicarLink = getById("publicar-link");
+
+const contatoModal = getById("contato-modal");
+const sobreModal = getById("sobre-modal");
+const publicarModal = getById("publicar-modal");
+
+const btnSobreModal = getById("btn-sobre-modal");
+const btnContatoModal = getById("btn-contato-modal");
+const btnPublicarModal = getById("btn-publicar-modal");
+
 const jobCards = document.querySelectorAll(".job-card");
 
 jobCards.forEach(element => {
     element.addEventListener("click", (event) => {
         event.preventDefault();
         const elementId = element.querySelector('input[type="hidden"]').value;
-        const dialog = document.getElementById(`job-${elementId}-modal`);
+        const dialog = getById(`job-${elementId}-modal`);
         dialog.showModal();
 
-        document.getElementById(`btn-job-${elementId}-modal`).addEventListener("click", (event) => {
-            event.preventDefault();
-            dialog.close();
-        });
+        closeModal(getById(`btn-job-${elementId}-modal`), dialog);
     });
 });
 
+showModal(contatoLink, contatoModal);
+showModal(sobreLink, sobreModal);
+showModal(publicarLink, publicarModal);
 
-contatoLink.addEventListener("click", (event) => {
-    event.preventDefault();
-    contatoModal.showModal();
-    contatoModal.scrollTop = 0;
-});
+closeModal(btnContatoModal, contatoModal);
+closeModal(btnSobreModal, sobreModal);
+closeModal(btnPublicarModal, publicarModal);
 
-sobreLink.addEventListener("click", (event) => {
-    event.preventDefault();
-    sobreModal.showModal();
-    sobreModal.scrollTop = 0;
-});
+//Functions
 
-btnSobreModal.addEventListener("click", (event) => {
-    event.preventDefault();
-    sobreModal.close();
-    sobreModal.scrollTop = 0;
-});
+function getById(elementId) {
+    return document.getElementById(elementId);
+}
 
-btnContatoModal.addEventListener("click", (event) => {
-    event.preventDefault();
-    contatoModal.close();
-    contatoModal.scrollTop = 0;
-});
+function showModal(dispatcher, target) {
+    dispatcher.addEventListener("click", (event) => {
+        event.preventDefault();
+        target.showModal();
+        target.scrollTop = 0;
+    });
+}
+
+function closeModal(dispatcher, target) {
+    dispatcher.addEventListener("click", (event) => {
+        event.preventDefault();
+        target.close();
+        target.scrollTop = 0;
+    });
+}
