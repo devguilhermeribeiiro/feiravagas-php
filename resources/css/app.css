@@ -40,7 +40,7 @@
 }
 
 .modal {
-    @apply w-full md:w-3/5 md:h-4/5 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-md p-6
+    @apply w-full md:w-3/5 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-md p-6
 }
 
 dialog::backdrop {

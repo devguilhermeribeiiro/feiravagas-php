@@ -18,6 +18,13 @@
         <x-jobs.dialog target="contato">
             <x-jobs.contents.contato />
         </x-jobs.dialog>
+
+        @auth
+            <x-jobs.link target="publicar" />
+            <x-jobs.dialog target="publicar">
+                <x-jobs.contents.form />
+            </x-jobs.dialog>
+        @endauth
     </x-jobs.header>
 
     <main class="main">
